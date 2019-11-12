@@ -32,20 +32,20 @@ class JoinGame extends Component {
     
     render() {
         return(
-            <form onSubmit={this.handleSubmit}>
-                <h3>Join Game</h3>
+            <form onSubmit={this.handleSubmit} className="join-form">
+                <h2>Join The Hunt</h2>
                 <div>
-                    <label for="join-name">Name</label>
-                    <input name="name" id="join-name" type="text" placeholder="Please enter name..." onChange={this.handleChange}></input>    
+                    <label for="join-name">Enter your name: </label><br /><br />
+                    <input name="name" id="join-name" type="text" onChange={this.handleChange}></input>    
                 </div>
-{/* 
-                <div>
+                 
+            {/* <div>
                     <label for="game_id">Game Code</label>
                     <input name="game_id" id="game_id" type="text" placeholder="Please enter name..." onChange={this.handleChange}></input>    
                 </div> */}
                 
                 <div>
-                    <input type="submit"></input>
+                    <input className="join-btn" type="submit"></input>
                 </div>
             </form>
         )

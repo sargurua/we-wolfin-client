@@ -1,22 +1,45 @@
+* {
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+}
+
 .App {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://media0.giphy.com/media/XFiImydWEVhNC/giphy.gif');
+  background-position: center;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.App h1 {
+  font-size: 300%;
+  padding: 20px 50px;
+}
+
+.join-form {
+  margin-top: 50px;
+  width: 100%;
+  height: 400px;
   text-align: center;
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
-.App-logo {
-  height: 40vmin;
+.join-form h2 {
+  font-size: 250%;
+  padding: 45px 0;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.join-form div input {
+  padding: 5px 10px;
+  margin-bottom: 15px;
+  color: #000;
 }
 
-.App-link {
-  color: #09d3ac;
+.join-form div .join-btn {
+  width: 172px;
+  background: transparent;
+  color: #fff;
+  border-radius: 2px;
 }
