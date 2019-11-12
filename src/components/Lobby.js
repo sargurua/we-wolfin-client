@@ -54,7 +54,12 @@ class Lobby extends Component {
     renderPlayers = (players) => {
         if(players !== []){
             return players.map(player => {
-                return <p key={player.id}>{ player.name }</p>
+                return (
+                    <div className="lobby-player-card">
+                        <h4>{player.name}</h4>
+                        <img src="https://res.cloudinary.com/teepublic/image/private/s--vSStJZf4--/t_Resized%20Artwork/c_fit,g_north_west,h_954,w_954/co_191919,e_outline:48/co_191919,e_outline:inner_fill:48/co_ffffff,e_outline:48/co_ffffff,e_outline:inner_fill:48/co_bbbbbb,e_outline:3:1000/c_mpad,g_center,h_1260,w_1260/b_rgb:eeeeee/c_limit,f_jpg,h_630,q_90,w_630/v1516385768/production/designs/2292106_0.jpg" />
+                    </div>
+                )
             })
         }
     }
@@ -76,19 +81,20 @@ class Lobby extends Component {
             this.gameHasStarted()
         }
         return (
-            <div>
-                <h2>Lobby ({this.state.players.length} / {this.state.game.num_players})</h2>
-                {/* <ActionCableConsumer
-                    channel={{ channel: 'UsersChannel' }}
-                    onReceived={this.handleReceived}
-                /> */}
-                { this.renderPlayers(this.state.players) }
+            <div className="lobby-page">
+                <div className="lobby-header">
+                    <h2>Welcome to the lobby</h2>
+                    <h3>({this.state.players.length} / {this.state.game.num_players}) players have joined</h3>
+                </div>
                 {this.state.start
                 ?
-                    <button onClick={this.handleClick}>Start</button>
+                    <button className="lobby-btn" onClick={this.handleClick}>Start</button>
                 :
                     null
                 }
+                <div className="lobby-player-list">
+                    { this.renderPlayers(this.state.players) }
+                </div>
             </div> 
         )   
     }

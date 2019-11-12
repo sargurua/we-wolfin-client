@@ -28,7 +28,7 @@ class CreateGame extends Component {
         })
 
         this.props.submitName(this.state.name)
-        
+
         this.setState({
             name: "",
             day: "8",
@@ -39,16 +39,16 @@ class CreateGame extends Component {
     }
     render(){
         return (
-            <form onSubmit={this.handleSubmit}>
-                <h3>Create a Game</h3>
+            <form className="create-form" onSubmit={this.handleSubmit}>
+                <h2>Create a Game</h2>
                 <div>
-                    <label for="name">Name:</label>
-                    <input type="text" name="name" id="name" placeholder="Please enter your name" onChange={this.handleChange}></input>
+                    <label for="name">Enter your name: </label><br/>
+                    <input type="text" name="name" id="name" onChange={this.handleChange}></input>
                 </div>
     
                 <div>
-                    <label for="num_players"># of players:</label>
-                    <select id="num_players" onChange={this.handleChange}>
+                    <label for="num_players"># of players:</label><br/>
+                    <select className="create-dd" id="num_players" onChange={this.handleChange}>
                         <option>3</option>
                         <option>4</option>
                         <option>5</option>
@@ -61,8 +61,8 @@ class CreateGame extends Component {
                 </div>
     
                 <div>
-                    <label for="day">Day Duration (min):</label>
-                    <select id="day" onChange={this.handleChange}>
+                    <label for="day">Day Duration (min):</label><br/>
+                    <select className="create-dd" id="day" onChange={this.handleChange}>
                         <option>8</option>
                         <option>9</option>
                         <option>10</option>
@@ -72,8 +72,8 @@ class CreateGame extends Component {
                 </div>
     
                 <div>
-                    <label for="night">Night Duration (min):</label>
-                    <select id="night" onChange={this.handleChange}>
+                    <label for="night">Night Duration (min):</label><br/>
+                    <select className="create-dd" id="night" onChange={this.handleChange}>
                         <option>8</option>
                         <option>9</option>
                         <option>10</option>
@@ -82,7 +82,7 @@ class CreateGame extends Component {
                     </select>
                 </div>
     
-                <input onClick={this.props.thereIsAGame} type="submit"></input>
+                <input className="create-btn" onClick={this.props.thereIsAGame} type="submit"></input>
             </form>
         )
     }

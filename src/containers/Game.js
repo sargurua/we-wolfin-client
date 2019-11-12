@@ -6,6 +6,7 @@ import TurnContainer from './TurnContainer';
 class Game extends Component {
     state = {
         role: {},
+        currentRole: {},
         game: {},
         players: [],
         roles: [],
@@ -20,6 +21,22 @@ class Game extends Component {
     intervalId2 = 0
 
     componentDidMount(){
+        fetch(`${API_ROOT}/games/1`)
+        .then(resp => resp.json())
+        .then(game => {
+            const role = game.users.find((user) => {
+                return user.name === this.props.name
+            })
+
+            this.setState({
+                role: role.role,
+                players: game.users,
+                turn: game.turn,
+                game: game,
+                roles: game.roles,
+                time: this.state.time - 1
+            })
+        })
         this.intervalId1 = setInterval(this.setGame, 1000)
         this.intervalId2 = setInterval(this.changeTurn, 30000)
     }
@@ -52,7 +69,7 @@ class Game extends Component {
             })
 
             this.setState({
-                role: role.role,
+                currentRole: role.role,
                 players: game.users,
                 turn: game.turn,
                 game: game,
@@ -60,7 +77,6 @@ class Game extends Component {
                 time: this.state.time - 1
             })
         })
-        console.log(this.state.players)
     }
 
     componentWillUnmount() {
@@ -85,14 +101,12 @@ class Game extends Component {
 
         return (
             <div>
-                <p>Your Name: {this.props.name}</p>
-                <p>Your Role: {this.state.role.name}</p>
-                <p>Timer: {this.state.time}</p>
+                <p>Your Role for Testing: {this.state.currentRole.name}</p>
             {       this.state.turn !== this.state.role.name
                     ?  
-                    <GameBoard roles={this.state.roles} players={this.state.players} />
+                    <GameBoard roles={this.state.roles} turn={this.state.game.turn} timer={this.state.time} players={this.state.players} />
                     : 
-                    <TurnContainer role={this.state.role} turn={this.state.game.turn} game={this.state.game}/>
+                    <TurnContainer name={this.props.name} role={this.state.role} turn={this.state.game.turn} game={this.state.game}/>
             }
             </div>
         )

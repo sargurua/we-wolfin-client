@@ -12,6 +12,7 @@ class Werewolf extends Component {
             <div>
                 <h2>You are a Werewolf</h2>
                 <h3>At night, all Werewolves open their eyes and look for other werewolves. If no one else opens their eyes, the other Werewolves are in the center.</h3>
+                <img className="avatar" src="https://i.imgur.com/p3G2DAx.png" />
                 <div className="action">
                     <h4>Fellow Werewolves</h4>
                     {this.renderWerewolves()}

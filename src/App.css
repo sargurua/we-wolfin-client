@@ -43,3 +43,160 @@
   color: #fff;
   border-radius: 2px;
 }
+
+.create-form {
+  margin-top: 50px;
+  width: 100%;
+  height: 500px;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.create-form h2 {
+  font-size: 250%;
+  padding: 45px 0;
+}
+
+.create-form div input {
+  padding: 5px 10px;
+  margin-bottom: 15px;
+  color: #000;
+}
+
+.create-dd {
+  color: #000;
+  margin-bottom: 10px;
+}
+
+.create-form .create-btn {
+  width: 172px;
+  background: transparent;
+  margin-top: 25px;
+  color: #fff;
+  border-radius: 2px;
+}
+
+.avatar {
+  width: 250px;
+  height: auto;
+}
+
+/* Lobby stuff */
+
+.lobby-page {
+  margin: 50px;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.lobby-header {
+  padding: 20px 50px;
+}
+
+.lobby-header h2 {
+  font-size: 200%;
+}
+
+.lobby-player-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.lobby-player-card {
+  border: 2px solid #fff;
+  width: 20%;
+  margin: 25px 2.3%;
+  text-align: center;
+  border-radius: 4px;
+}
+
+.lobby-player-card h4 {
+  font-size: 150%;
+  margin: 10px;
+}
+
+.lobby-player-card img {
+  width: 150px;
+  height: auto;
+  border-radius: 50%;
+  margin: 10px;
+}
+
+.lobby-btn {
+  width: 175px;
+  font-size: 150%;
+  letter-spacing: 3px;
+  height: 50px;
+  margin: 35px;
+  background: transparent;
+  margin-top: 25px;
+  color: #fff;
+  border: 2px solid #fff;
+  border-radius: 2px;
+}
+
+/* Game Board Stuff */
+
+.board-page {
+  margin: 50px;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.board-header {
+  padding: 15px 30px;
+}
+
+.board-header h2 {
+  font-size: 200%;
+}
+
+.board-header h3 {
+  font-size: 175%;
+}
+
+.board-body {
+  display: flex;
+}
+
+.board-players {
+  width: 50%;
+  padding: 30px;
+}
+
+.board-player-item img {
+  width: 50px;
+  margin: 10px;
+  border-radius: 50%;
+}
+
+.board-player-item p {
+  display: inline-block;
+}
+
+.board-hidden {
+  width: 50%;
+}
+
+/* Seer Turn Stuff */
+
+.seer-page .action button {
+  color: #000;
+}
+.seer-form select {
+  color: #000;
+}
+
+.seer-form input {
+  color: #000;
+}
+
+.robber-page .action button {
+  color: #000;
+}
+
+.robber-form select {
+  color: #000;
+}
+
+.robber-form input {
+  color: #000;
+}
