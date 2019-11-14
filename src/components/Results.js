@@ -21,8 +21,7 @@ class Results extends Component {
 
     setTime = () => {
         if (this.state.timer === 0){
-            fetch(`${API_ROOT}/seperate`)
-            this.props.history.push('/')
+            this.props.history.push('/error')
         }
         this.setState({
             timer: this.state.timer - 1
@@ -82,18 +81,63 @@ class Results extends Component {
         return this.displayResults()
     }
 
+    displayKilled = () => {
+        console.log(this.state.killed)
+        if (this.state.killed !== null){
+            return this.state.killed.map(user => {
+                return (
+                    <div>
+                        <h3>{user.name} was killed, they were {user.role.name} and they received {user.votes} votes </h3>
+                    </div>
+                )
+            })
+        }
+        else {
+            return null
+        }
+    }
+
     displayResults = () => {
+        let isUserTown = null
         if (this.state.townWin !== null && this.state.game.users !== undefined){
             const user = this.state.game.users.find(user => user.name === this.props.name)
-            const isUserTown = user.role.name !== "Werewolf"
-    
-            if ((this.state.townWin && isUserTown) || (!this.state.townWin && !isUserTown)){
-                return <div className="results-result">You Win</div>
-            }
-            else{
-                return <div className="results-result">You lose</div>
-            }
+            isUserTown = user.role.name !== "Werewolf"
         }
+        else if (this.state.game === null){
+            this.props.history.push("/error")
+        }
+    
+        //     if ((this.state.townWin && isUserTown) || (!this.state.townWin && !isUserTown)){
+        //         return <div className="results-result">You Win</div>
+        //     }
+        //     else{
+        //         return <div className="results-result">You lose</div>
+        //     }
+        // }
+
+        return (
+            <div>
+                <div>
+                    {
+                        this.state.killed !== null
+                        ?
+                            this.displayKilled()
+                        :
+                            null
+                    }
+                </div>
+                <div>
+                    {
+                        (this.state.townWin && isUserTown) || (!this.state.townWin && !isUserTown)
+                        ?
+                            <div className="results-result">You Win</div>
+                        :
+                            <div className="results-result">You lose</div>
+                    }
+                </div>
+            </div>
+        )
+
     }
 
 

@@ -18,6 +18,7 @@ class GameBoard extends Component {
         return (
             <div className="board-page">
                 <div className="board-header">
+                    <h2>Your starting role: {this.props.roleName}</h2>
                     <h2>Current Turn: {this.props.turn}</h2>
                     <h3>Time Remaining: {this.props.timer} seconds</h3>
                 </div>

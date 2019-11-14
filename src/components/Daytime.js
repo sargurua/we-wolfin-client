@@ -15,7 +15,7 @@ class Daytime extends Component {
 
     componentDidMount () {
         this.setState({
-            timer: 30
+            timer: 300
         })
 
         this.intervalId1 = setInterval(this.changeTime, 1000)

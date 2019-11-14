@@ -4,10 +4,13 @@ import HomePage from './containers/HomePage';
 
 function App() {
   return (
-    <div className="App">
-        <h1>We Wolfin'</h1>
-        <HomePage />
-    </div>
+      <div className="App">
+          <head>
+            <link href="https://fonts.googleapis.com/css?family=Yeon+Sung&display=swap" rel="stylesheet" />
+          </head>
+          <h1>We Wolfin'</h1>
+          <HomePage />
+      </div>
   );
 }
 

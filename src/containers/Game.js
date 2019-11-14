@@ -14,9 +14,9 @@ class Game extends Component {
         hidden: [],
         turnIndex: 0,
         turn: "",
-        turnOrder: ["Werewolf", "Minion", "Seer", "Robber", "Troublemaker", "Insomniac", "DayTime"],
-        // turnOrder: ["Werewolf", "DayTime"],
-        time: 30
+        turnOrder: ["Werewolf", "Minion", "Mason", "Seer", "Robber", "Troublemaker", "Insomniac", "DayTime"],
+        // turnOrder: ["DayTime", "DayTime"],
+        time: 20
     }
 
     intervalId1 = 0
@@ -45,7 +45,7 @@ class Game extends Component {
                 })
             })
             this.intervalId1 = setInterval(this.setGame, 1000)
-            this.intervalId2 = setInterval(this.changeTurn, 30000)
+            this.intervalId2 = setInterval(this.changeTurn, 20000)
         }
         else {
             this.props.history.push("/error")
@@ -66,7 +66,7 @@ class Game extends Component {
             this.setState({
                 turn: game.turn,
                 turnIndex: this.state.turnIndex + 1,
-                time: 30
+                time: 20
             })
         })
     }
@@ -123,18 +123,15 @@ class Game extends Component {
     }
     
     render() {
-        // console.log("Whyyyyyyyyyyyyyyyy", this.state.currentRole, this.state.currentRole.name)
         return (
             <div>
-                <p>Your First Role for Testing: {this.state.role !== null ? this.state.role.name : null}</p>
-                <p>Your Current Role for Testing: {this.state.currentRole !== null ? this.state.currentRole.name : null}</p>
-            {                  
-                this.state.turn !== this.state.role.name
-                ?  
-                    <GameBoard name={this.props.name} intervalId2={this.intervalId2} intervalId1={this.intervalId1} roles={this.state.roles} turn={this.state.game.turn} timer={this.state.time} players={this.state.players} />
-                : 
-                    <TurnContainer name={this.props.name} role={this.state.role} turn={this.state.game.turn} game={this.state.game}/>
-            }
+                {                  
+                    this.state.turn !== this.state.role.name
+                    ?  
+                        <GameBoard roleName={this.state.role.name} name={this.props.name} intervalId2={this.intervalId2} intervalId1={this.intervalId1} roles={this.state.roles} turn={this.state.game.turn} timer={this.state.time} players={this.state.players} />
+                    : 
+                        <TurnContainer name={this.props.name} role={this.state.role} turn={this.state.game.turn} game={this.state.game}/>
+                }
             </div>
         )
     }

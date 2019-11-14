@@ -10,13 +10,13 @@ class Insomniac extends Component {
 
         return (
             <div className="robber-response">
-                <h3>You started as the Insomniac</h3>
+                <h3>Your starting role was Insomniac</h3>
                 {
                 user.role.name === "Insomniac"
                 ?
                     <h4>You are still the Insomniac</h4>
                 :
-                    <h4>You now are a {user.role.name}</h4>
+                    <h4>You are now a {user.role.name}</h4>
                 }
             </div>
         )

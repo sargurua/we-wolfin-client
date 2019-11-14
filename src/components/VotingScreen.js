@@ -44,7 +44,8 @@ class VotingScreen extends Component {
     renderOptions = () => {
         console.log(this.state.game)
         if (this.state.game){
-            const playerOptions = this.state.game.users.map(user => {
+            const sortedUsers = this.state.game.users.sort((a, b) => a.id - b.id)
+            const playerOptions = sortedUsers.map(user => {
                 if (user.name !== this.props.name){
                     return <option value={user.id}>{user.name}</option>
                 }

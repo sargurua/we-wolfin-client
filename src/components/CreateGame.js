@@ -8,7 +8,7 @@ class CreateGame extends Component {
         name: "",
         day: "8",
         night: "8",
-        num_players: "7"
+        num_players: "8"
     }
     handleChange = event => {
         this.setState({
@@ -33,7 +33,7 @@ class CreateGame extends Component {
             name: "",
             day: "8",
             night: "8",
-            num_players: "7"
+            num_players: "8"
         })
 
     }
@@ -49,7 +49,7 @@ class CreateGame extends Component {
                 <div>
                     <label for="num_players"># of players:</label><br/>
                     <select className="create-dd" id="num_players" onChange={this.handleChange}>
-                        <option>7</option>
+                        <option>8</option>
                     </select>
                 </div>
     

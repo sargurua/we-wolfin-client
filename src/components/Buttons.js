@@ -36,7 +36,7 @@ class Buttons extends Component {
 
     render() {
         return (
-            <div>
+            <div className="buttons-page">
                 {
                     this.state.gameExists
                     ?
@@ -44,7 +44,7 @@ class Buttons extends Component {
                     :
                     this.state.gameExists === null
                     ?
-                    <h2>Loading....</h2>
+                    <h2 className="buttons-loading">Loading....</h2>
                     :
                     <CreateGame submitName={this.props.submitName}/>
                 }

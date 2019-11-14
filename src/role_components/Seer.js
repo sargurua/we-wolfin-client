@@ -158,7 +158,7 @@ class Seer extends Component {
                 <div className="action">
                     <div className="seer-choice-btns">
                         <button style={style} className="view-player-btn" onClick={this.renderHandlePlayerClick}>View Players</button>
-                        <button style={style} className="view-hidden-btn" onClick={this.renderHandleHiddenClick}>View Hidden</button>
+                        <button style={style} className="view-hidden-btn">View Hidden(This doesn't work- Icebox )</button>
                     </div>
                     { this.state.choosing 
                     ? 

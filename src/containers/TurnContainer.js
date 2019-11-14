@@ -6,6 +6,7 @@ import Troublemaker from '../role_components/TroubleMaker';
 import Robber from '../role_components/Robber';
 import Minion from '../role_components/Minion';
 import Insomniac from '../role_components/Insomniac'
+import Mason from '../role_components/Mason'
 
 class TurnContainer extends Component {
 
@@ -33,6 +34,10 @@ class TurnContainer extends Component {
         return <Insomniac name={this.props.name} game={this.props.game} />
     }
 
+    checkMason = () => {
+        return <Mason name={this.props.name} game={this.props.game} />
+    }
+
     renderCorrectTurn = () => {
         switch(this.props.role.name) {
             case "Werewolf":
@@ -47,6 +52,8 @@ class TurnContainer extends Component {
                 return this.checkMinion()
             case "Insomniac":
                 return this.checkInsomniac()
+            case "Mason":
+                return this.checkMason()
             default:
                 console.log(this.props.turn, this.props.role)
         }
