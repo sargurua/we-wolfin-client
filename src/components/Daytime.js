@@ -18,7 +18,7 @@ class Daytime extends Component {
         .then(game => {
             console.log(game)
             this.setState({
-                timer: 10,
+                timer: 100,
                 game
             })
         })

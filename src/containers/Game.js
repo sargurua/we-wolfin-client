@@ -16,7 +16,7 @@ class Game extends Component {
         turn: "",
         turnOrder: ["Werewolf", "Seer", "Robber", "Troublemaker", "DayTime"],
         // turnOrder: ["Werewolf", "DayTime"],
-        time: 10
+        time: 30
     }
 
     intervalId1 = 0
@@ -41,7 +41,7 @@ class Game extends Component {
                 })
             })
             this.intervalId1 = setInterval(this.setGame, 1000)
-            this.intervalId2 = setInterval(this.changeTurn, 3000)
+            this.intervalId2 = setInterval(this.changeTurn, 30000)
         }
         else {
             this.props.history.push("/error")

@@ -6,7 +6,7 @@ class VotingScreen extends Component {
     state = {
         game: null,
         choiceMade: false,
-        timer: 15
+        timer: 30
     }
 
     intervalId1 = 0
