@@ -162,41 +162,417 @@
   padding: 30px;
 }
 
-.board-player-item img {
-  width: 50px;
-  margin: 10px;
-  border-radius: 50%;
+.board-players h2 {
+  font-size: 130%;
+  margin-bottom: 10px;
+  margin-left: 15px;
 }
 
-.board-player-item p {
-  display: inline-block;
+.bplist {
+  display: flex;
+}
+
+.board-player-item {
+  text-align: center;
+  width: 20%;
+  margin: 1.5%;
+  padding: 1%;
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 3px;
+}
+
+.board-player-item img {
+  width: 50px;
+  margin: 5px;
+  border-radius: 50%;
 }
 
 .board-hidden {
   width: 50%;
+  padding: 30px;
+}
+
+.board-hidden h2 {
+  font-size: 130%;
+  margin-bottom: 10px;
+  margin-left: 15px;
+}
+
+.hidden-list {
+  display: flex;
+}
+
+.hidden-list-item {
+  text-align: center;
+  width: 20%;
+  margin: 1.5%;
+  padding: 1%;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 3px;
+}
+
+.hidden-list-item img {
+  width: 100%;
+  height: 100%;
+}
+
+/* Day Stuff */
+.day-page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://jooinn.com/images/trees-and-grass-field-under-cloudy-sky-during-daytime.jpg');
+  background-size: cover;
+  z-index: 9999;
+  height: 100vh;
+  width: 100%;
+}
+
+.day-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 50px;
+}
+
+.day-header h2 {
+  padding-top: 40px;
+  width: 30%;
+  font-size: 175%;
+}
+
+.day-header img {
+  width: 250px;
+  border-radius: 50%;
+}
+
+.day-body {
+  text-align: center;
+}
+
+.day-body h3 {
+  font-size: 350%;
+}
+
+.day-body h4 {
+  font-size: 200%;
+}
+
+/* Reusable role stuff */
+
+.role-header {
+  display: flex;
+}
+
+.role-description {
+  width: 50%;
+  padding-top: 25px;
+  padding-left: 25px;
+}
+
+.role-description h2 {
+  font-size: 250%;
+  margin-bottom: 15px;
+}
+
+.role-description h3 {
+  font-size: 150%;
+  margin-bottom: 15px;
+}
+
+.role-img {
+  width: 50%;
+  text-align: right;
+  padding-right: 100px;
+}
+
+.role-img img {
+  width: 175px;
+}
+
+/* Werewolf Stuff */
+
+.werewolf-action {
+  text-align: center;
+  margin: 0 auto;
+  padding: 30px;
+  width: 40%;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.werewolf-action h2 {
+  font-size: 250%;
+}
+
+.werewolf-action h3 {
+  font-size: 175%;
 }
 
 /* Seer Turn Stuff */
 
-.seer-page .action button {
-  color: #000;
+.seer-choice-btns {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 50px;
 }
+
+.seer-choice-btns button {
+  font-size: 175%;
+  width: 225px;
+  height: 50px;
+  background-color: transparent;
+  border: 3px solid orchid;
+  color: orchid;
+}
+
+.seer-form {
+  text-align: center;
+  margin: 0 auto;
+  padding: 30px;
+  width: 40%;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
 .seer-form select {
-  color: #000;
+  width: 200px;
+  height: 40px;
+  background-color: rgba(0, 0, 0, 0.4);
+  border: 3px solid chartreuse;
+  border-radius: 3px;
+  color: chartreuse;
+  margin-bottom: 20px;
+}
+
+.seer-form select option {
+  background-color: rgba(0, 0, 0, 0.4);
+  color: chartreuse;
 }
 
 .seer-form input {
-  color: #000;
+  padding: 15px;
+  font-size: 150%;
+  background-color: transparent;
+  border: 3px solid violet;
+  border-radius: 3px;
+  color: violet;
 }
 
-.robber-page .action button {
-  color: #000;
+.seer-response {
+  text-align: center;
+  margin: 0 auto;
+  padding: 30px;
+  width: 40%;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.seer-response h3 {
+  font-size: 200%;
+  margin-bottom: 25px;
+}
+
+.seer-response p {
+  font-size: 125%;
+  margin-bottom: 15px;
+}
+
+/* Robber Turn Stuff */
+
+.robber-action-form {
+  text-align: center;
+  margin: 0 auto;
+  padding: 30px;
+  width: 40%;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.robber-action-form h3 {
+  font-size: 175%;
+  margin-bottom: 25px;
+}
+
+.robber-form {
+  text-align: center;
+  margin: 0 auto;
 }
 
 .robber-form select {
-  color: #000;
+  width: 200px;
+  background-color: rgba(0, 0, 0, 0.4);
+  border: 3px solid chartreuse;
+  border-radius: 3px;
+  color: chartreuse;
+  margin-bottom: 20px;
+}
+
+.robber-form select option {
+  background-color: rgba(0, 0, 0, 0.4);
+  color: chartreuse;
 }
 
 .robber-form input {
-  color: #000;
+  padding: 0 15px;
+  font-size: 150%;
+  background-color: transparent;
+  border: 3px solid violet;
+  border-radius: 3px;
+  color: violet;
+}
+
+.robber-response {
+  text-align: center;
+  margin: 0 auto;
+  padding: 30px;
+  width: 40%;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.robber-response h3 {
+  font-size: 200%;
+  margin-bottom: 25px;
+}
+
+.robber-response h4 {
+  font-size: 125%;
+  margin-bottom: 15px;
+}
+
+/* Troublemaker Stuff */
+
+
+.trouble-action-form {
+  text-align: center;
+  margin: 0 auto;
+  padding: 30px;
+  width: 40%;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.trouble-action-form h3 {
+  font-size: 175%;
+  margin-bottom: 25px;
+}
+
+.trouble-form {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.trouble-form select {
+  width: 200px;
+  background-color: rgba(0, 0, 0, 0.4);
+  border: 3px solid chartreuse;
+  border-radius: 3px;
+  color: chartreuse;
+  margin-bottom: 20px;
+}
+
+.trouble-form select option {
+  background-color: rgba(0, 0, 0, 0.4);
+  color: chartreuse;
+}
+
+.trouble-form input {
+  padding: 0 15px;
+  font-size: 150%;
+  background-color: transparent;
+  border: 3px solid violet;
+  border-radius: 3px;
+  color: violet;
+}
+
+.trouble-response {
+  text-align: center;
+  margin: 0 auto;
+  padding: 30px;
+  width: 40%;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.trouble-response h2 {
+  font-size: 200%;
+  margin-bottom: 25px;
+}
+
+.trouble-response h3 {
+  font-size: 125%;
+  margin-bottom: 15px;
+}
+
+/* Vote Stuff */
+
+.vote-page {
+  text-align: center;
+  padding-top: 25px;
+}
+
+.vote-page h1 {
+  font-size: 300%;
+}
+
+.vote-page h2 {
+  font-size: 200%;
+}
+
+.vote-choice {
+  text-align: center;
+  margin: 0 auto;
+  padding: 30px;
+  width: 40%;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.vote-form {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.vote-form select {
+  width: 200px;
+  background-color: rgba(0, 0, 0, 0.4);
+  border: 3px solid chartreuse;
+  border-radius: 3px;
+  color: chartreuse;
+  margin-bottom: 20px;
+}
+
+.vote-form select option {
+  background-color: rgba(0, 0, 0, 0.4);
+  color: chartreuse;
+}
+
+.vote-form input {
+  padding: 0 15px;
+  font-size: 150%;
+  background-color: transparent;
+  border: 3px solid violet;
+  border-radius: 3px;
+  color: violet;
+}
+
+/* Results Page Stuff */
+.results-page {
+  text-align: center;
+  padding-top: 50px;
+}
+
+.results-page h2 {
+  font-size: 300%;
+  margin-bottom: 50px
+}
+
+.results-result {
+  font-size: 500%;
+}
+
+/* Error page */
+.error-page {
+  padding-top:19%;
+  text-align: center;
+  position: absolute;
+  left:0;
+  top: 0;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://media1.giphy.com/media/WGqRQcDTShkJi/giphy.gif');
+  background-size: fill;
+  z-index: 9999;
+  height: 100vh;
+  width: 100%;
 }

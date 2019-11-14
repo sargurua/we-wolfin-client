@@ -146,12 +146,20 @@ class Seer extends Component {
         const style = this.state.buttonsGone ? {display: "none"} : {}
         return (
             <div className="seer-page">
-                <h2>You are a Seer</h2>
-                <h3>At night, the Seer may look either at one other player's card or at two of the hidden cards, but does not move them.</h3>
-                <img className="avatar" src="https://cdn.shopify.com/s/files/1/0740/4855/products/seer_2048x.png?v=1567511595" />
+                <div className="role-header">
+                    <div className="role-description">
+                        <h2>You are a Seer</h2>
+                        <h3>At night, the Seer may look either at one other player's card or at two of the hidden cards, but does not move them.</h3>
+                    </div>
+                    <div className="role-img">
+                        <img className="avatar" src="https://cdn.shopify.com/s/files/1/0740/4855/products/seer_2048x.png?v=1567511595" />
+                    </div>
+                </div>
                 <div className="action">
-                    <button style={style} className="view-player-btn" onClick={this.renderHandlePlayerClick}>View Players</button>
-                    <button style={style} className="view-hidden-btn" onClick={this.renderHandleHiddenClick}>View Hidden</button>
+                    <div className="seer-choice-btns">
+                        <button style={style} className="view-player-btn" onClick={this.renderHandlePlayerClick}>View Players</button>
+                        <button style={style} className="view-hidden-btn" onClick={this.renderHandleHiddenClick}>View Hidden</button>
+                    </div>
                     { this.state.choosing 
                     ? 
                     this.renderForm()
@@ -160,8 +168,8 @@ class Seer extends Component {
                     }
                     {this.state.choiceMade
                     ?
-                    <div>
-                        <h3>Choice made</h3>
+                    <div className="seer-response">
+                        <h3>You discovered...</h3>
                         {this.state.choiceBtn === "player"
                         ?
                         <p>{this.state.selectedUser.name} is a {this.state.selectedUser.role.name}</p>

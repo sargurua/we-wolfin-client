@@ -18,7 +18,12 @@ class Lobby extends Component {
     intervalID = 0;
     
     componentDidMount() {
-        this.intervalID = setInterval(this.fetchGame, 1000)
+        if(this.props.name !== ""){
+            this.intervalID = setInterval(this.fetchGame, 1000)
+        }
+        else {
+            this.props.history.push("/error")
+        }       
     }
 
     componentWillUnmount() {
@@ -41,13 +46,15 @@ class Lobby extends Component {
         .then(res => res.json())
         .then(game => {
             console.log(game)
-            const newStart = game.users.length === game.num_players
-            this.setState({
-                players: game.users,
-                start: newStart,
-                started: game.started,
-                game
-            })
+            if(game.users !== undefined){
+                const newStart = game.users.length === game.num_players
+                this.setState({
+                    players: game.users,
+                    start: newStart,
+                    started: game.started,
+                    game
+                })
+            }
         })
     }
 

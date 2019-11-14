@@ -3,9 +3,10 @@ import {API_ROOT, HEADERS} from "../constants";
 import Lobby from "../components/Lobby";
 import Buttons from "../components/Buttons";
 import Game from './Game';
+import Error from '../components/Error'
+import Results from '../components/Results'
 import {
     BrowserRouter as Router,
-    Switch,
     Route
 } from "react-router-dom";
 
@@ -47,13 +48,19 @@ class HomePage extends Component {
             <div>
                 <Router>
                     <Route exact path="/lobby">
-                        <Lobby setRoles={this.setRoles} />
+                        <Lobby name={this.state.name} setRoles={this.setRoles} />
                     </Route>
                     <Route exact path="/">
                         <Buttons submitName={this.submitName} gameExists={this.state.gameExists}/>
                     </Route>
                     <Route exact path="/game">
                         <Game name={this.state.name}/>
+                    </Route>
+                    <Route exact path="/end">
+                        <Results name={this.state.name}/>
+                    </Route>
+                    <Route exact path="/error">
+                        <Error />
                     </Route>
                 </Router>
             </div>

@@ -4,18 +4,26 @@ class Werewolf extends Component {
 
     renderWerewolves = () => {
         const werewolves = this.props.game.users.filter(user => user.role.name === "Werewolf")
-        return werewolves.map(user => <p>{user.name}</p>)
+        return werewolves.map(user => <h3>{user.name}</h3>)
     }
     
     render() {
         return(
-            <div>
-                <h2>You are a Werewolf</h2>
-                <h3>At night, all Werewolves open their eyes and look for other werewolves. If no one else opens their eyes, the other Werewolves are in the center.</h3>
-                <img className="avatar" src="https://i.imgur.com/p3G2DAx.png" />
+            <div className="werewolf-page">
+                <div className="role-header">
+                    <div className="role-description">
+                        <h2>You are a Werewolf</h2>
+                        <h3>At night, all Werewolves open their eyes and look for other werewolves. If no one else opens their eyes, the other Werewolves are in the center.</h3>
+                    </div>
+                    <div className="role-img">
+                        <img className="avatar" src="https://i.imgur.com/p3G2DAx.png" />
+                    </div>
+                </div>
                 <div className="action">
-                    <h4>Fellow Werewolves</h4>
-                    {this.renderWerewolves()}
+                    <div className="werewolf-action">
+                        <h2>Your Fellow Werewolves</h2>
+                        {this.renderWerewolves()}
+                    </div>
                 </div>
             </div>
         )

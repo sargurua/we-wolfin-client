@@ -16,7 +16,7 @@ class Robber extends Component {
             }
         })
         return (
-            <div>
+            <div className="robber-action-form">
                 <h3>Who you robbin'?</h3>
                 <form className="robber-form" onSubmit={this.handleSubmit}>
                     <select>
@@ -38,8 +38,9 @@ class Robber extends Component {
         })
 
         return (
-            <div>
-                <p>You have robbed {selected.name} and are now the {user.role.name}</p>
+            <div className="robber-response">
+                <h3>You have robbed {selected.name}</h3>
+                <h4>Your new role is {user.role.name}</h4>
             </div>
         )
     }
@@ -71,11 +72,15 @@ class Robber extends Component {
     render() {
         return (
             <div className="robber-page">
-                <h2>You are a Robber</h2>
-                <h3>At night, the Robber may choose to rob a card from another player and place his Robber card where the other card was. Then the Robber looks at his new card. The
-                    player who receives the Robber card is on the village team. The Robber is on the team of the card he takes, however, he does not do the action of his new role at night.
-                    If the Robber chooses not to rob a card from an- other player, he remains the Robber and is on the village team.</h3>
+                <div className="role-header">
+                    <div className="role-description">
+                        <h2>You are a Robber</h2>
+                        <h3>At night, the Robber may choose to rob a card from another player and become their role. The new role can change the robber's team.</h3>
+                    </div>
+                    <div className="role-img">
                     <img className="avatar" src="http://geekandsundry.com/wp-content/uploads/2017/02/Robber.png" />
+                    </div>
+                </div>
                 <div className="action">
                     {this.state.robbed
                     ?

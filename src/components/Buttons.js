@@ -27,7 +27,7 @@ class Buttons extends Component {
     }
 
     componentDidMount() {
-        this.intervalId = setInterval(this.checkForGame, 1000)
+        this.intervalId = setInterval(this.checkForGame, 3000)
     }
 
     componentWillUnmount() {

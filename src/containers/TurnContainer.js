@@ -26,11 +26,11 @@ class TurnContainer extends Component {
     renderCorrectTurn = () => {
         switch(this.props.role.name) {
             case "Werewolf":
-                return this.checkTroublemaker()
+                return this.checkWerewolf()
             case "Seer":
-                return this.checkTroublemaker()
+                return this.checkSeer()
             case "Robber":
-                return this.checkTroublemaker()
+                return this.checkRobber()
             case "Troublemaker":
                 return this.checkTroublemaker()
             case "Day":

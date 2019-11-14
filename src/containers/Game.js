@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {API_ROOT, HEADERS } from "../constants";
 import GameBoard from '../components/GameBoard';
 import TurnContainer from './TurnContainer';
+import {withRouter} from 'react-router-dom'
 
 class Game extends Component {
     state = {
@@ -14,31 +15,37 @@ class Game extends Component {
         turnIndex: 0,
         turn: "",
         turnOrder: ["Werewolf", "Seer", "Robber", "Troublemaker", "DayTime"],
-        time: 30
+        // turnOrder: ["Werewolf", "DayTime"],
+        time: 10
     }
 
     intervalId1 = 0
     intervalId2 = 0
 
     componentDidMount(){
-        fetch(`${API_ROOT}/games/1`)
-        .then(resp => resp.json())
-        .then(game => {
-            const role = game.users.find((user) => {
-                return user.name === this.props.name
-            })
+        if (this.props.name !== ""){
+            fetch(`${API_ROOT}/games/1`)
+            .then(resp => resp.json())
+            .then(game => {
+                const role = game.users.find((user) => {
+                    return user.name === this.props.name
+                })
 
-            this.setState({
-                role: role.role,
-                players: game.users,
-                turn: game.turn,
-                game: game,
-                roles: game.roles,
-                time: this.state.time - 1
+                this.setState({
+                    role: role.role,
+                    players: game.users,
+                    turn: game.turn,
+                    game: game,
+                    roles: game.roles,
+                    time: this.state.time - 1
+                })
             })
-        })
-        this.intervalId1 = setInterval(this.setGame, 1000)
-        this.intervalId2 = setInterval(this.changeTurn, 30000)
+            this.intervalId1 = setInterval(this.setGame, 1000)
+            this.intervalId2 = setInterval(this.changeTurn, 3000)
+        }
+        else {
+            this.props.history.push("/error")
+        }
     }
 
     changeTurn = () => {
@@ -55,7 +62,7 @@ class Game extends Component {
             this.setState({
                 turn: game.turn,
                 turnIndex: this.state.turnIndex + 1,
-                time: 30
+                time: 10
             })
         })
     }
@@ -68,6 +75,7 @@ class Game extends Component {
                 return user.name === this.props.name
             })
 
+            game.users.sort((a, b) => a.id - b.id)
             this.setState({
                 currentRole: role.role,
                 players: game.users,
@@ -104,7 +112,7 @@ class Game extends Component {
                 <p>Your Role for Testing: {this.state.currentRole.name}</p>
             {       this.state.turn !== this.state.role.name
                     ?  
-                    <GameBoard roles={this.state.roles} turn={this.state.game.turn} timer={this.state.time} players={this.state.players} />
+                    <GameBoard name={this.props.name} intervalId2={this.intervalId2} intervalId1={this.intervalId1} roles={this.state.roles} turn={this.state.game.turn} timer={this.state.time} players={this.state.players} />
                     : 
                     <TurnContainer name={this.props.name} role={this.state.role} turn={this.state.game.turn} game={this.state.game}/>
             }
@@ -113,4 +121,4 @@ class Game extends Component {
     }
 }
 
-export default Game;
+export default withRouter(Game);

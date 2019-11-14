@@ -4,8 +4,8 @@ import {API_ROOT, HEADERS} from '../constants'
 class Troublemaker extends Component {
     state = {
         troubled: false,
-        selected_id_1: 0, 
-        selected_id_2: 0,
+        selected_1: 0, 
+        selected_2: 0,
     }
 
     renderPlayers = () => {
@@ -18,7 +18,7 @@ class Troublemaker extends Component {
         })
 
         return (
-            <div>
+            <div className="trouble-action-form">
                 <h3>Who you troublin'?</h3>
                 <form className="trouble-form" onSubmit={this.handleSubmit}>
                     <p>Player 1</p>
@@ -58,20 +58,35 @@ class Troublemaker extends Component {
         })
         .then(resp => console.log(resp))
         this.setState({
-            selected_id_1: selected1.id,
-            selected_id_2: selected2.id,
+            selected_1: selected1,
+            selected_2: selected2,
             troubled: true
         })
     }
 
     render() {
         return (
-            <div>
-                <h2>You are a Troublemaker</h2>
-                <h3>At night, the Troublemaker may switch the cards of two other players without looking at those The players who receive 1 a different card are now the role (and team) of their new card, even though they don't know what role that is until the end of the game. The Troublemaker is on the village team.</h3>
-                <img className="avatar" src="https://i.pinimg.com/236x/1c/f9/02/1cf9021785ffbe933a2da4459e85c74a--one-night-werewolf.jpg" />
+            <div className="trouble-page">
+                <div className="role-header">
+                    <div className="role-description">
+                        <h2>You are a Troublemaker</h2>
+                        <h3>At night, the Troublemaker may switch the cards of two other players without looking at those The players who receive 1 a different card are now the role (and team) of their new card, even though they don't know what role that is until the end of the game. The Troublemaker is on the village team.</h3>
+                    </div>
+                    <div className="role-img">
+                        <img className="avatar" src="https://i.pinimg.com/236x/1c/f9/02/1cf9021785ffbe933a2da4459e85c74a--one-night-werewolf.jpg" />
+                    </div>
+                </div>
                 <div className="action">
-                    { this.renderPlayers() }
+                    {this.state.troubled
+                    ?
+                    <div className="trouble-response">
+                        <h2>You have swapped these player's roles.</h2>
+                        <h3>{this.state.selected_1.name}</h3>
+                        <h3>{this.state.selected_2.name}</h3>
+                    </div>
+                    :
+                    this.renderPlayers()
+                    }
                 </div>
             </div>
         )
