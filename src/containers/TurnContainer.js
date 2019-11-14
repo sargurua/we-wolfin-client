@@ -4,11 +4,17 @@ import Werewolf from '../role_components/Werewolf';
 import Seer from '../role_components/Seer';
 import Troublemaker from '../role_components/TroubleMaker';
 import Robber from '../role_components/Robber';
+import Minion from '../role_components/Minion';
+import Insomniac from '../role_components/Insomniac'
 
 class TurnContainer extends Component {
 
     checkWerewolf = () => {
         return <Werewolf game={this.props.game} />
+    }
+
+    checkMinion = () => {
+        return <Minion game={this.props.game} />
     }
 
     checkSeer = () => {
@@ -23,6 +29,10 @@ class TurnContainer extends Component {
         return <Troublemaker name={this.props.name} game={this.props.game} />
     }
 
+    checkInsomniac = () => {
+        return <Insomniac name={this.props.name} game={this.props.game} />
+    }
+
     renderCorrectTurn = () => {
         switch(this.props.role.name) {
             case "Werewolf":
@@ -33,8 +43,10 @@ class TurnContainer extends Component {
                 return this.checkRobber()
             case "Troublemaker":
                 return this.checkTroublemaker()
-            case "Day":
-                console.log("Day");
+            case "Minion":
+                return this.checkMinion()
+            case "Insomniac":
+                return this.checkInsomniac()
             default:
                 console.log(this.props.turn, this.props.role)
         }

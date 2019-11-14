@@ -6,15 +6,15 @@ import {withRouter} from 'react-router-dom'
 
 class Game extends Component {
     state = {
-        role: {},
-        currentRole: {},
+        role: {name: ""},
+        currentRole: {name: ""},
         game: {},
         players: [],
         roles: [],
         hidden: [],
         turnIndex: 0,
         turn: "",
-        turnOrder: ["Werewolf", "Seer", "Robber", "Troublemaker", "DayTime"],
+        turnOrder: ["Werewolf", "Minion", "Seer", "Robber", "Troublemaker", "Insomniac", "DayTime"],
         // turnOrder: ["Werewolf", "DayTime"],
         time: 30
     }
@@ -27,12 +27,16 @@ class Game extends Component {
             fetch(`${API_ROOT}/games/1`)
             .then(resp => resp.json())
             .then(game => {
-                const role = game.users.find((user) => {
+                const user = game.users.find((user) => {
                     return user.name === this.props.name
                 })
 
+                if(user.role === null){
+                    user.role = {name: ""}
+                }
                 this.setState({
-                    role: role.role,
+                    currentRole: {name: ""},
+                    role: user.role,
                     players: game.users,
                     turn: game.turn,
                     game: game,
@@ -62,7 +66,7 @@ class Game extends Component {
             this.setState({
                 turn: game.turn,
                 turnIndex: this.state.turnIndex + 1,
-                time: 10
+                time: 30
             })
         })
     }
@@ -71,13 +75,26 @@ class Game extends Component {
         fetch(`${API_ROOT}/games/1`)
         .then(resp => resp.json())
         .then(game => {
-            const role = game.users.find((user) => {
+            const user = game.users.find((user) => {
                 return user.name === this.props.name
             })
 
+            let newRole = {}
+
+            if(user.role === null){
+                user.role = {name: ""}
+            }
+
+            if(this.state.role.name === ""){
+                newRole = user.role
+            }
+            else {
+                newRole = this.state.role
+            }
             game.users.sort((a, b) => a.id - b.id)
             this.setState({
-                currentRole: role.role,
+                role: newRole,
+                currentRole: user.role,
                 players: game.users,
                 turn: game.turn,
                 game: game,
@@ -106,14 +123,16 @@ class Game extends Component {
     }
     
     render() {
-
+        // console.log("Whyyyyyyyyyyyyyyyy", this.state.currentRole, this.state.currentRole.name)
         return (
             <div>
-                <p>Your Role for Testing: {this.state.currentRole.name}</p>
-            {       this.state.turn !== this.state.role.name
-                    ?  
+                <p>Your First Role for Testing: {this.state.role !== null ? this.state.role.name : null}</p>
+                <p>Your Current Role for Testing: {this.state.currentRole !== null ? this.state.currentRole.name : null}</p>
+            {                  
+                this.state.turn !== this.state.role.name
+                ?  
                     <GameBoard name={this.props.name} intervalId2={this.intervalId2} intervalId1={this.intervalId1} roles={this.state.roles} turn={this.state.game.turn} timer={this.state.time} players={this.state.players} />
-                    : 
+                : 
                     <TurnContainer name={this.props.name} role={this.state.role} turn={this.state.game.turn} game={this.state.game}/>
             }
             </div>

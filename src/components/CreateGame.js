@@ -8,7 +8,7 @@ class CreateGame extends Component {
         name: "",
         day: "8",
         night: "8",
-        num_players: "3"
+        num_players: "7"
     }
     handleChange = event => {
         this.setState({
@@ -33,7 +33,7 @@ class CreateGame extends Component {
             name: "",
             day: "8",
             night: "8",
-            num_players: "3"
+            num_players: "7"
         })
 
     }
@@ -49,18 +49,11 @@ class CreateGame extends Component {
                 <div>
                     <label for="num_players"># of players:</label><br/>
                     <select className="create-dd" id="num_players" onChange={this.handleChange}>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                        <option>6</option>
                         <option>7</option>
-                        <option>8</option>
-                        <option>9</option>
-                        <option>10</option>
                     </select>
                 </div>
     
-                <div>
+                {/* <div>
                     <label for="day">Day Duration (min):</label><br/>
                     <select className="create-dd" id="day" onChange={this.handleChange}>
                         <option>8</option>
@@ -69,9 +62,9 @@ class CreateGame extends Component {
                         <option>11</option>
                         <option>12</option>
                     </select>
-                </div>
+                </div> */}
     
-                <div>
+                {/* <div>
                     <label for="night">Night Duration (min):</label><br/>
                     <select className="create-dd" id="night" onChange={this.handleChange}>
                         <option>8</option>
@@ -80,7 +73,7 @@ class CreateGame extends Component {
                         <option>11</option>
                         <option>12</option>
                     </select>
-                </div>
+                </div> */}
     
                 <input className="create-btn" onClick={this.props.thereIsAGame} type="submit"></input>
             </form>

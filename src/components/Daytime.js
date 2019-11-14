@@ -10,20 +10,28 @@ class Daytime extends Component {
         discuss: true
     }
 
-    intervalId = 0
+    intervalId1 = 0
+    intervalId2 = 0
 
     componentDidMount () {
+        this.setState({
+            timer: 30
+        })
+
+        this.intervalId1 = setInterval(this.changeTime, 1000)
+        this.intervalId2 = setInterval(this.checkGame, 2000)
+        
+    }
+
+    checkGame = () => {
         fetch(`${API_ROOT}/games/1`)
         .then(resp => resp.json())
         .then(game => {
             console.log(game)
             this.setState({
-                timer: 100,
                 game
             })
         })
-
-        this.intervalId = setInterval(this.changeTime, 1000)
     }
 
     componentWillUnmount() {
@@ -31,8 +39,23 @@ class Daytime extends Component {
     }
 
     changeTime = () => {
-        if(this.state.timer === 0) {
-            clearInterval(this.intervalId)
+        if(this.state.timer <= 0 ) {
+            clearInterval(this.intervalId1)
+            clearInterval(this.intervalId2)
+            fetch(`${API_ROOT}/games/votingTime`, {
+                method: "PATCH",
+                headers: HEADERS,
+                body: JSON.stringify({
+                    voting: true
+                })
+            })
+            this.setState({
+                discuss: false
+            })
+        }
+        if (this.state.game.voting === true) {
+            clearInterval(this.intervalId1)
+            clearInterval(this.intervalId2)
             this.setState({
                 discuss: false
             })

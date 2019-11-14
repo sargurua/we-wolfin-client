@@ -6,13 +6,13 @@ import JoinGame from './JoinGame'
 
 class Buttons extends Component {
     state = {
-        gameExists: true
+        gameExists: null
     }
 
     intervalId = 0;
 
     checkForGame = () => {
-        console.log("fetching")
+        console.log(this.state.gameExists)
         fetch(`${API_ROOT}/games`)
         .then(res => res.json())
         .then(games => {
@@ -27,7 +27,7 @@ class Buttons extends Component {
     }
 
     componentDidMount() {
-        this.intervalId = setInterval(this.checkForGame, 3000)
+        this.intervalId = setInterval(this.checkForGame, 1000)
     }
 
     componentWillUnmount() {
@@ -41,6 +41,10 @@ class Buttons extends Component {
                     this.state.gameExists
                     ?
                     <JoinGame submitName={this.props.submitName}/>
+                    :
+                    this.state.gameExists === null
+                    ?
+                    <h2>Loading....</h2>
                     :
                     <CreateGame submitName={this.props.submitName}/>
                 }

@@ -3,7 +3,12 @@ import React, {Component} from 'react'
 class Werewolf extends Component {
 
     renderWerewolves = () => {
-        const werewolves = this.props.game.users.filter(user => user.role.name === "Werewolf")
+        const werewolves = this.props.game.users.filter(user => {
+            if (user.role === null){
+                user.role = {name: "Werewolf"}
+            }
+            return user.role.name === "Werewolf"
+        })
         return werewolves.map(user => <h3>{user.name}</h3>)
     }
     
